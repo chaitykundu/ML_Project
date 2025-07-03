@@ -12,8 +12,8 @@ logging.basicConfig(
     filename=LOG_FILE_PATH,
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(LOG_FILE_PATH),
-        logging.StreamHandler()
-    ]
+    
 )
+
+if __name__=="__main__":
+    logging.info("Logging setup complete.")
