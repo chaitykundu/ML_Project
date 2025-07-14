@@ -9,6 +9,7 @@ from sklearn.impute import SimpleImputer #checking missing values
 from sklearn.pipeline import Pipeline  # for pipelining
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 
+
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_object
@@ -19,7 +20,7 @@ class DataTransformationConfig:
 
 class DataTransformation:
     def __init__(self):
-        self.config = DataTransformationConfig()
+        self.data_transformation_config = DataTransformationConfig()
 
     def get_data_transformer_object(self):
         try:
@@ -42,7 +43,7 @@ class DataTransformation:
             cat_pipeline = Pipeline(
                 steps=[
                     ("imputer", SimpleImputer(strategy='most_frequent')),
-                    ("onehotencoder", OneHotEncoder(handle_unknown="ignore", sparse=True)),
+                    ("onehotencoder", OneHotEncoder(handle_unknown="ignore", sparse_output=True)),
                     ("scaler", StandardScaler(with_mean=False))
                 ]
             )
