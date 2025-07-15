@@ -27,9 +27,33 @@ class ModelTrainer:
     def __initi__(self):
         self.model_trainer_config = ModelTrainerConfig()
 
-    def initiate_model_trainer(self, train_array, test_array, preprocessor_path):
+    def initiate_model_trainer(self, train_array, test_array):
         try:
             logging.info("Splitting training and testing input data")
-            
+            X_train, y_train, X_test, y_test = (
+                train_array[:,:-1],
+                train_array[:,-1],
+                test_array[:,:-1],
+                test_array[:,-1]
+            )
+            models ={
+                "Random Forest" : RandomForestRegressor(),
+                "Decision Tree" : DecisionTreeRegressor(),
+                "Linear Regression" : LinearRegression(),
+                "K-Neighbors" : KNeighborsRegressor(),
+                "AdaBoost" : AdaBoostRegressor(),
+                "Gradient Boosting" : GradientBoostingRegressor(),
+                "XGBoost" : XGBRegressor(),
+                "CatBoost" : CatBoostRegressor(verbose=False)
+            }
+            model_report: dict = evaluate_models(
+                X_train=X_train,
+                y_train=y_train,
+                X_test=X_test,
+                y_test=y_test,
+                models=models,
+                
+
+            )
         except:
             pass
