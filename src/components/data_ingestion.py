@@ -26,10 +26,10 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info("Initiating data ingestion...")
         try:
-            df = pd.read_csv('notebook\data\stud.csv')
+            df = pd.read_csv(r'notebook\data\stud.csv')
             logging.info("Read dataset as dataframe")
-            
-            os.makedirs(os.path.dirname(self.config.raw_data_path), exist_ok=True)
+
+            os.makedirs(os.path.dirname(self.config.train_data_path), exist_ok=True)
             df.to_csv(self.config.raw_data_path, index=False, header=True)
 
             logging.info("Train test split initiated")

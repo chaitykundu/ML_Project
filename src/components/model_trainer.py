@@ -24,7 +24,7 @@ class ModelTrainerConfig:
     trained_model_file_path= os.path.join("artifacts","model.pkl")
 
 class ModelTrainer:
-    def __initi__(self):
+    def __init__(self):
         self.model_trainer_config = ModelTrainerConfig()
 
     def initiate_model_trainer(self, train_array, test_array):
@@ -71,8 +71,8 @@ class ModelTrainer:
             )
 
             predicted = best_model.predict(X_test)
-            r2_score = r2_score(y_test, predicted)
-            return r2_score
+            r2_scor = r2_score(y_test, predicted)
+            return r2_scor
 
         except Exception as e:
             raise CustomException(e,sys)
