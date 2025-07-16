@@ -46,6 +46,13 @@ class ModelTrainer:
                 "XGBoost" : XGBRegressor(),
                 "CatBoost" : CatBoostRegressor(verbose=False)
             }
+            params={
+                "Decision Tree": {
+                    'criterion':['squared_error', 'friedman_mse', 'absolute_error', 'poisson'],
+                    # 'splitter':['best','random'],
+                    # 'max_features':['sqrt','log2'],
+                },
+            }
             model_report: dict = evaluate_models(
                 X_train=X_train,
                 y_train=y_train,
