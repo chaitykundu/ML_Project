@@ -62,6 +62,11 @@ class ModelTrainer:
                     'learning_rate': [0.01, 0.1, 0.2],
                     'max_depth': [3, 5, 7],
                 },
+                "CatBoost": {
+                    'iterations': [100, 200],
+                    'learning_rate': [0.01, 0.1, 0.2],
+                    'depth': [3, 5, 7],
+                }
                 
             }
             model_report: dict = evaluate_models(
@@ -69,7 +74,8 @@ class ModelTrainer:
                 y_train=y_train,
                 X_test=X_test,
                 y_test=y_test,
-                models=models,                
+                models=models,
+                param =params                
             )
             #to get the best model score from dictionary
             best_model_score =max(sorted(model_report.values()))
