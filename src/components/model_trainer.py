@@ -52,6 +52,17 @@ class ModelTrainer:
                     # 'splitter':['best','random'],
                     # 'max_features':['sqrt','log2'],
                 },
+                "Random Forest": {
+                    'n_estimators': [100, 200],
+                    'max_features': ['sqrt', 'log2'],
+                    'min_samples_split': [2, 5, 10],
+                },
+                "XGBoost": {
+                    'n_estimators': [100, 200],
+                    'learning_rate': [0.01, 0.1, 0.2],
+                    'max_depth': [3, 5, 7],
+                },
+                
             }
             model_report: dict = evaluate_models(
                 X_train=X_train,
